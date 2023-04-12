@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typing test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h1>welcome to typing speed test !</h1>
+    <div class="container">
+        <div class="content">
+
+            <!-- code with live server -->
+
+        </div>
+        <div class="liveresult">
+            <span class="icon small">SPEED</span><br>
+            <span class="word" id="wordpermin">0</span><span class="wpm">WPM</span>
+            <br><br><br><br>
+            <span class="icon small">ACCURACY</span><br>
+            <span class="word" id="percent">100</span><span class="per">%</span>
+            </i>
+        </div>
+        <div class="greet">
+            WELL DONE , KEEP PRACTICE FOR BETTER SCORES
+            <i class="far fa-heart"></i>
+        </div>
+    </div>
+    <button class="button"><a href="index.html">Retry</a></button>
+
+
+
+    <!-------------------------------script start from here----------------------------->
+
+
+    <script>
+
+        const body = $("body");
+        const btn = $("button");
+        const greet = $(".greet");
+        const container = $(".container");
+        const percent = $("#percent");
+        const wordpermin = $("#wordpermin");
+        let a = 0;
+        let i = 0;
+        let incorrect = 0;
+        let totalentries = 0;
+        let para1;
+        let array1 = [
+            "Gandhi's vision of an independent India based on religious pluralism was challenged in the early 1940s by a new Muslim nationalism which demanded a separate Muslim homeland carved out of India. In August 1947, Britain granted independence, but the British Indian Empire was partitioned into two dominions, the Hindu-majority India and the Muslim-majority Pakistan.",
+
+            "Just over 96% of the total amount of the world's water is held in its oceans, according to Water in Crisis: A Guide to the World's Fresh Water Resources via the United States Geological Survey (USGS). However, that's primarily saltwater. To find the bulk of the world's freshwater you need to trek to the poles, as 68.7% of it is encased in ice caps, permanent snow, and glaciers.",
+
+            "Hang on to your hats because this isn't your average wind storm. In 1996, a tropical cyclone named Olivia hit off the coast of Barrow Island, Australia with such a force that it broke an incredible record. According to The Weather Channel, Olivia's eyewall produced five extreme three-second wind gusts, the peak of which was a 253 mph gust.",
+
+            "Abe Lincoln was a champion wrestler. He was also a licensed bartender. Maybe they should call him an “Abe of all trades.",
+
+            "1. In ancient Egypt, servants were smeared with honey so flies would flock to them instead of the pharaoh ,  Before the invention of modern false teeth, dentures were commonly made from the teeth of dead soldiers.",
+
+            "While the Wright Brothers are famous as a pair, they actually only flew together once. They promised their father they’d always fly separately.",
+
+            "According to Tori Avey, coffee became a popular drink in America after the Boston Tea Party of 1773: making the switch from tea to coffee was considered a patriotic duty.",
+
+            "Lima beans have an amazing ability to command wasps as a defense. If insects are eating the lima bean's leaves, the plant gives off a substance that acts as a signal to parasitic wasps to swoop in and destroy their enemy (i.e. the leaf-eating insects).",
+
+            "German Chocolate Cake is not from Germany. German is actually the last name of the man who invented a kind of baking chocolate (Sam German).",
+
+            "The Wright Brothers only flew together once (though both piloted the planes individually): on May 25, 1910 they took a six-minute flight piloted by Orville with Wilbur as his passenger.",
+
+            "Before European contact (which caused populations to diminish rapidly ) California indigenous tribal groups spoke more than 200 unique dialects. ,Amelia Earhart first saw a plane at the age of 10, but didn't take an airplane ride until 1920 when she was 23 years old. ",
+
+            "After landing in Ireland after her first solo Atlantic flight, a farmer asked Amelia Earhart where she was from. When she said America, he almost didn't believe her!",
+
+            "Frederick Douglass birth name was Frederick Augustus Washington Bailey. When he married he chose the last name Douglass after the hero clan in Sir Walter Scott's famous poem, Lady of the Lake.",
+
+            "Yuma, Arizona gets over 4000 hours of sunshine a year, making it the sunniest place on earth. The least sunny place is the South Pole, where the sun only shines on 182 days a year. (Which would you rather live in?)"
+        ];
+        const random = Math.floor(Math.random() * 14);
+        para1 = array1[random];
+        let word = para1.split(" ").length;
+        let totalchar = para1.split("").length;
+        let end;
+        let start;
+        let time = 0;
+        let time2 = 0;
+
+        // ---------------------------function declare---------------------
+
+        function check(key) {
+            totalentries++;
+            if (key == para1[i]) {
+                // console.log("correct");
+                $(`#span${i + 1}`).addClass("green");
+                $(`#span${i}`).removeClass("green");
+                $(`#span${i}`).removeClass("red");
+                i++;
+            }
+            else {
+                // console.log("incorrect");
+                $(`#span${i}`).addClass("red");
+                $(`#span${i}`).removeClass("clrGreen");
+                incorrect++;
+            }
+        }
+
+        // -----------------------------*function declare----------------------------
+
+        // -------------------------------Time calculation--------------------------
+
+        setInterval(() => {
+            if (time == 5) {
+                start = new Date().getTime();
+            }
+            if (time2 == 1) {
+                end = new Date().getTime();
+
+            }
+        }, 1);
+
+        // -------------------------------*Time calculation--------------------------
+
+        for (k = 0; k < para1.length; k++) {
+            $(".content").append(`<span id = "span${k}">${para1[k]}</span>`);
+        };
+
+        $(`#span${i}`).addClass("green");
+        body.keyup((e) => {
+            let key = e.key;
+            a = 1;
+            setInterval(() => {
+                time++;
+            }, 1);
+
+            if (e.key == para1[totalchar - 1]) {
+                time2++;
+            }
+
+            if (e.key == "Shift") {
+                e.preventDefault();
+                return false;
+            }
+            // console.log(key);
+
+
+            $(`#span${i - 1}`).removeClass("green");
+            $(`#span${i}`).addClass("clrGreen");
+
+            check(key);
+
+            // setTimeout(() => {
+            //     if (i == totalchar) {
+            //         console.log(start);
+            //         console.log(end);
+            //         let WPM = Math.floor((word / ((end - start) / 1000)) * 60);
+            //         console.log(`${WPM} WPM`);
+            //         console.log(`${Math.floor(100 - ((incorrect / totalchar) * 100))}%`);
+            //     }
+            // }, 2);
+        });
+
+        intervalid = setInterval(() => {
+            if (a == 1) {
+                $("#percent").text(`${Math.floor(100 - ((incorrect / totalchar) * 100))}`);
+                let temptime = new Date().getTime();
+                let q = (totalentries - incorrect) / 5;
+                let w = Math.floor((temptime - start) / 1000);
+                let final = Math.floor((q / w) * 60);
+                console.log(`${i}`);
+                $("#wordpermin").text(`${final}`);
+            }
+        }, 2000);
+
+        stopid = setInterval(() => {
+            if (i == totalchar) {
+                clearInterval(intervalid);
+                $(".content").addClass("movecontent");
+                $(".liveresult").addClass("moveliveresult");
+                greet.addClass("movegreet");
+                container.addClass("colortocnt");
+                percent.addClass("bold");
+                wordpermin.addClass("bold");
+
+                clearInterval(stopid);
+            }
+        }, 500);
+
+
+    </script>
+</body>
+
+</html>

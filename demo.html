@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: proxima, Arial, Tahoma, Verdana, sans-serif;
+        font-size: 2rem;
+        line-height: 1.2;
+
+        color: #5c5c5c;
+        background-color: #f3f3f3;
+    }
+
+    p {
+        /* background-color: aqua; */
+        color: rgb(3, 7, 1);
+        display: inline;
+
+    }
+
+    .text {
+        position: absolute;
+        top: 0px;
+    }
+
+    .green {
+        background-color: rgb(81, 231, 11);
+        color: white;
+        padding: 3px;
+        border-radius: 8px;
+    }
+
+    .red {
+        background-color: red;
+        color: white;
+        padding: 3px;
+        border-radius: 8px;
+    }
+
+    .clrGreen {
+        color: rgb(81, 231, 11);
+    }
+</style>
+
+<body>
+
+    <script>
+        const body = $("body");
+        let i = 0;
+        let incorrect = 0;
+        let para1 = "my name is yash kaushik."
+        let word = para1.split(" ").length;
+        let totalentries = para1.split("").length;
+        let end;
+        let start;
+        let time = 0;
+        let time2 = 0;
+
+
+        setInterval(() => {
+            if (time == 5) {
+                start = new Date().getTime();
+            }
+            if (time2 == 1) {
+                end = new Date().getTime();
+
+            }
+        }, 1);
+
+
+        function check(key) {
+            if (key == para1[i]) {
+                console.log("correct");
+                $(`#span${i + 1}`).addClass("green");
+                $(`#span${i}`).removeClass("green");
+                $(`#span${i}`).removeClass("red");
+                i++;
+            }
+            else {
+                console.log("incorrect");
+                $(`#span${i}`).addClass("red");
+                $(`#span${i}`).removeClass("clrGreen");
+                incorrect++;
+            }
+        }
+
+        for (k = 0; k < para1.length; k++) {
+            body.append(`<span id = "span${k}">${para1[k]}</span>`);
+        };
+
+        $(`#span${i}`).addClass("green");
+
+        body.keyup((e) => {
+            let key = e.key;
+
+            setInterval(() => {
+                time++;
+            }, 1);
+
+            if (e.key == para1[totalentries - 1]) {
+                time2++;
+            }
+
+            if (e.key == "Shift") {
+                e.preventDefault();
+                return false;
+            }
+            console.log(key);
+
+
+            $(`#span${i - 1}`).removeClass("green");
+            $(`#span${i}`).addClass("clrGreen");
+
+            check(key);
+
+            setTimeout(() => {
+                if (i == totalentries) {
+                    console.log(start);
+                    console.log(end);
+                    let WPM = Math.floor((word / ((end - start) / 1000)) * 60);
+                    console.log(`${WPM} WPM`);
+                    console.log(`${Math.floor(100 - ((incorrect / totalentries) * 100))}%`);
+                }
+            }, 2);
+        });
+
+
+    </script>
+</body>
+
+</html>

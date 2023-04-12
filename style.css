@@ -1,0 +1,204 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(84, 207, 238);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    min-height: 85vh;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    position: relative;
+    text-transform: uppercase;
+    top: -30px;
+    color: #fff;
+}
+
+.container{
+    /* border: 2px solid red ; */
+    padding: 20px;
+    background-color: #fff;
+    color: #5c5c5c;
+    border-radius: 10px;
+    height: 350px;
+    width: 1000px;
+    display: grid;
+    grid-template-columns: min-content 1fr 400px;
+    overflow: hidden;
+}
+.content{
+    width: 775px;
+    line-height: 2.2rem;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: .3s linear;
+}
+.greet{
+    /* border: 2px solid red; */
+    position: relative;
+    left: 450px;
+    color: rgb(255 ,179 ,40);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 3rem;
+}
+.greet i {
+    font-size:3rem;
+    color: rgb(84, 207, 238);
+}
+.liveresult{
+    padding: 20px;
+    transition: .3s linear;
+    
+}
+i{
+font-size: 1.4rem;    
+}
+.icon {
+    color: #b5bbc2;
+}
+.word{
+    color: #67defd;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-style: italic;
+}
+.small{
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    word-spacing: 2rem;
+    line-height: 2rem;
+    font-weight: 700;
+    position: relative;
+    top: -4px;
+    left: 5px;
+}
+.per , .wpm{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 15px;
+    color: #67defd;
+}
+
+.green {
+    background-color: #5bc538;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.red {
+    background-color: #F36747;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.clrGreen {
+    color: #5bc538;
+}
+
+.movecontent {
+    position: relative;
+    left: -850px;
+    animation: mvcnt .5s linear ;
+}
+@keyframes mvcnt{
+    from{
+        left: 0px;
+    }
+    to{
+        left: -850px;
+    }
+}
+.movegreet{
+    position: relative;
+    left: -450px;
+    animation: mvgt .5s linear;
+}
+@keyframes mvgt{
+    from{
+        left: 0px;
+    }
+    to{ 
+        left: -450px;
+    }
+}
+.moveliveresult{
+    position: relative;
+    left: -550px; 
+    animation: mvlr .5s linear;
+}
+
+@keyframes mvlr{
+    from{
+        left: 0px;
+    }
+    to{ 
+        left: -550px;
+    }
+}
+
+:root {
+	--background-color: #ffe5e5;
+	--color: #000000;
+	--feedback-bg-color: #ffffff;
+	--feedback-secondary-color: #ffacac;
+	--feedback-primary-color: #53488d;
+	--feedback-icon-color: #ffffff;
+	--feedback-form-input: #f4f4f4;
+}
+
+.button{
+  padding: 10px 10px;
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  top: 50px;
+  text-decoration: none;
+  border-radius: 7px;
+  border-bottom-left-radius: 0; background-color: var(--feedback-secondary-color);
+  transition: all 0.3s;
+  
+}
+button a {
+
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+}
+.button:hover {
+		border-radius: 0px;
+    
+		color: var(--feedback-primary-color);
+		background-color: var(--background-color);
+		background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffacac' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+		animation: animatedBackground 5s linear infinite alternate;
+	}
+
+@keyframes animatedBackground {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 100% 0;
+	}
+}
+
+.colortocnt{
+    background-color: white;
+}
+
+.bold {
+    font-weight: 700;
+}
